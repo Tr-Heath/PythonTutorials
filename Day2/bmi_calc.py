@@ -5,4 +5,4 @@ weight = float(input("Enter your weight in kg: "))
 
 
 print(weight / height ** 2)
-print(int(weight / height ** 2))
+print(round(weight / height ** 2, 1))
