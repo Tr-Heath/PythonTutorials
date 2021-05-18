@@ -16,6 +16,7 @@ class Player_State:
     game_lost = False
     
     def __init__(self, game_word):
+        self.game_word = game_word
         for letter in game_word:
             self.word.append("_")
 
@@ -60,6 +61,7 @@ player = Player_State(game_word)
 print(player)
 print(game_word)
 while "_" in player.word:
+    print(player.word)
     print(f"You have used {player.guess_count} of 6 guesses")
     if player.guess_count == MAX_GUESSES:
         player.game_lost = True
