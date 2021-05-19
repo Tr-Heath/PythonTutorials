@@ -3,10 +3,9 @@
 #Will need some kind of dictionary of words to pick from.
 #Function to search for guess
 #Array to keep guesses so far, initialize to array of '_' to the length of the word.
-import random
+import random, wordlist
 
 MAX_GUESSES = 6
-word_list = ["aardvark", "baboon", "camel"]
 
 class Player_State:
     word = []
@@ -45,10 +44,10 @@ class Player_State:
         for num in correct_list:
             player.word[num] = player.recent_guess
 
-def init_game(word_list):
+def init_game():
     print("Welcome to the game of hangman!")
     print("Can you complete the word before time runs out?")
-    return random.choice(word_list)
+    return random.choice(wordlist.words)
 
 def end_game(loss):
     if loss:
@@ -56,7 +55,7 @@ def end_game(loss):
     else:
         print(f"Game over! You win!")
 
-game_word = init_game(word_list)
+game_word = init_game()
 player = Player_State(game_word)
 print(player)
 print(game_word)
@@ -68,5 +67,5 @@ while "_" in player.word:
         break
     player.get_user_choice()
     player.check_guess()
-
+print(player.word)
 end_game(player.game_lost)
