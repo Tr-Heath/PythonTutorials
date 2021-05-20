@@ -60,10 +60,11 @@ def end_game(loss):
         print(f"Game over! You win! It was {game_word}")
 
 def print_word(word):
-    newstring = ""
+    newstring = "Solve: "
     for letter in word:
         newstring += letter + " "
     print(newstring)
+    print("")
 
 game_word = init_game()
 player = Player_State(game_word)
