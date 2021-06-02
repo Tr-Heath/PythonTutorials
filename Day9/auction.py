@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Blind auction system.
 #Ask for bidder name and keep taking max bids from individuals until there are no 
 #bidders remaining. Clear the screen after every input bid.
@@ -59,3 +60,22 @@ while a.keepBidding == "yes":
     a.checkContinue()
 
 a.calculateAuction()
+=======
+#Day 9, working with dictionaries in Python, exercised with simple auction tracking app
+
+student_scores = {
+  "Harry": 81,
+  "Ron": 78,
+  "Hermione": 99, 
+  "Draco": 74,
+  "Neville": 62,
+}
+
+order = {
+    "starter": {1: "Salad", 2: "Soup"},
+    "main": {1: ["Burger", "Fries"], 2: ["Steak"]},
+    "dessert": {1: ["Ice Cream"], 2: []},
+}
+
+print(order["main"][2][0])
+>>>>>>> e034c5b6e25c0dede389ffbb1b4b6088b19fb4f8
