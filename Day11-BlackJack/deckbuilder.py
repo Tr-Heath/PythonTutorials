@@ -26,7 +26,7 @@ class CardDeck:
     def __init__(self):
         for cardvalue in self.card_values:
             for cardsuit in self.card_suits:
-                self.deck.append([cardvalue,cardsuit])
+                self.deck.append([{cardvalue: self.card_values[cardvalue]},cardsuit])
     
     def shuffle(self):
         '''Based on Fisher-Yates shuffle and as demonstrated by Donald Knuth in The Art of Computer Programming 2. Seminumerical algorithms.'''
@@ -37,3 +37,7 @@ class CardDeck:
             self.deck[k] = self.deck[n]
             self.deck[n] = temp
             n -= 1
+    
+    def drawcard(self):
+        if(len(self.deck) > 0):
+            return self.deck.pop()

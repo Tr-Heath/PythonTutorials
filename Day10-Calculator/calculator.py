@@ -1,5 +1,5 @@
 #Create a calculator that can perform the standard operations MDAS.
-import calc_art
+from calc_art import logo
 result = [0.0, "n"]
 operators = ['+', '-', '*', '/']
 
@@ -12,7 +12,10 @@ def calculate(a, b, opp):
     elif opp == "*":
         return a * b
     elif opp == "/":
-        return a / b
+        if b != 0:
+            return a / b
+        else:
+            return "NaN" #return string indicating result is not a number
 
 def getUserInput(result):
     if(result[1].lower() == "n"):
@@ -23,11 +26,15 @@ def getUserInput(result):
     b = float(input("And the second operand? "))
     c = calculate(result[0], b, opp)
     print(f"{result[0]} {opp} {b} = {c}")
-    result[0] = c
-    result[1] = input(f"Type 'y' to continue calculating with {result[0]} as the first operand or 'n' to start fresh. 'q' to quit Calculator. ")
+    if isinstance(c, float):
+        result[0] = c
+        result[1] = input(f"Type 'y' to continue calculating with {result[0]} as the first operand or 'n' to start fresh. 'q' to quit Calculator. ")
+    else:
+        print('Invalid input resulted in divide by zero.')
+        result[1] = "n"
     return result
 
-print(f"{calc_art.logo}")
+print(f"{logo}")
 while result[1] != "q":
     result = getUserInput(result)
 
