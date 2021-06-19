@@ -2,21 +2,21 @@
 import random
 
 class CardDeck:
-
+    #todo: Some games need rankings for face cards ie. a Queen outranks a Jack.
     card_values = {
-            2: "Two",
-            3 : "Three",
-            4 : "Four",
-            5 : "Five",
-            6 : "Six",
-            7 : "Seven",
-            8 : "Eight",
-            9 : "Nine",
-            10 : "Ten",
-            11 :"Jack",
-            12 : "Queen",
-            13 : "King",
-            1  : "Ace"
+            "Two":2,
+            "Three":3,
+            "Four":4,
+            "Five":5,
+            "Six":6,
+            "Seven":7,
+            "Eight":8,
+            "Nine":9,
+            "Ten":10,
+            "Jack":10,
+            "Queen":10,
+            "King":10,
+            "Ace":11
     }
 
     card_suits = ["Spades", "Diamonds", "Clubs", "Hearts" ]
