@@ -45,35 +45,62 @@ class BlackJack:
                 else:
                     handtotal += int(sum(card[0].values()))
         return handtotal
-
-    def printhand(self, hand, isDealer):
+    
+    def printDealerHand(self, isEnd):
         display = ""
-        if isDealer :
-            print(f"Dealer shows {list(hand[0][0].keys())[0]} of {hand[0][1]}")
-        else:
-            for card in hand:
-                value = card[0]
-                suit = card[1]
+        if isEnd:
+            print("The End")
+            for card in self.dealerHand:
                 display += f"{list(card[0].keys())[0]} of {card[1]}, "
-            print(f"You have {display}")
+            print(f"Dealer has {display}")
+        else:
+            print(f"Dealer shows {list(self.dealerHand[0][0].keys())[0]} of {self.dealerHand[0][1]}")
+
+    def printPlayerHand(self):
+        display = ""
+        for card in self.playerHand:
+            display += f"{list(card[0].keys())[0]} of {card[1]}, "
+        print(f"You have {display}")
 
     def hit(self, isDealer):
         if(isDealer):
             self.dealerHand.append(self.cardDeck.drawcard())
         else:
             self.playerHand.append(self.cardDeck.drawcard())
-        
+
+    def resetHands(self):
+        self.playerHand = []
+        self.dealerHand = []
 
 game = BlackJack()
 print(logo)
-game.deal()
+playerChoice = "Start"
+#print(game.playerBank)
 
-game.printhand(game.playerHand, False)
-playertotal = game.calculate_hand(game.playerHand)
-game.printhand(game.dealerHand, True)
-dealertotal = game.calculate_hand(game.dealerHand)
-game.hit(False)
-game.printhand(game.playerHand, False)
+while playerChoice != "Q":
+    game.resetHands()
+    game.deal()
+
+    game.printPlayerHand()
+    game.printDealerHand(False)
+
+    #start choice loop
+    while playerChoice != "Q":
+        dealertotal = game.calculate_hand(game.dealerHand)
+        playertotal = game.calculate_hand(game.playerHand)
+        print("What would you like to do?")
+        playerChoice = input("Enter \"H\" for Hit, \"S\" for Stay, \"Q\" to stop playing.")
+        if playerChoice == "H":
+            game.hit(False)
+            game.printPlayerHand()
+        elif playerChoice == "S":
+            print(f"Dealer total is {dealertotal}")
+            if dealertotal < 17:
+                game.hit(True)
+            game.printDealerHand(True)
+    #reset
+
+
 print(playertotal)
 print(dealertotal)
-print(game.playerBank)
+
