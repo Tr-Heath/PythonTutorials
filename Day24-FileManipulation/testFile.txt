@@ -1,0 +1,4 @@
+Hello, this is the text in the sample file.
+Additional lines.
+
+Blank space above.Additional text.
